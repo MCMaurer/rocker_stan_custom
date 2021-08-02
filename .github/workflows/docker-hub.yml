@@ -30,7 +30,7 @@ jobs:
         with:
           file: Dockerfile
           push: true
-          tags: mculshawmaurer/rocker-stan-custom
+          tags: mculshawmaurer/rocker-stan-custom:github-actions
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}     

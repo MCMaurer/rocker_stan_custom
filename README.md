@@ -13,3 +13,7 @@ https://code.usgs.gov/umesc/fishStan
 https://github.com/jrnold/docker-stan/blob/master/rstan/Dockerfile
 
 https://github.com/antoine-sachet/rocker-ML/blob/master/rocker-stan/Dockerfile
+
+### Haven't tried here yet
+
+https://github.com/rbartelme/phenophasebbn/blob/main/rstudio-bayes-cpu/Dockerfile

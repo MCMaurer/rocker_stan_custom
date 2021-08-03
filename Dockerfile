@@ -44,4 +44,4 @@ RUN install2.r --error --deps TRUE -r "https://mc-stan.org/r-packages/" \
 
 RUN install2.r --error --deps TRUE \
     brms \
-    && rm -rf /tmp/downloaded_packages/ /tmp/*.rdsy
+    && rm -rf /tmp/downloaded_packages/ /tmp/*.rds

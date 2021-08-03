@@ -1,11 +1,11 @@
 FROM rocker/tidyverse:latest
 
 # customizing RStudio
-COPY .config /home/rstudio/.config
-COPY .Rprofile /home/rstudio/
+COPY build_imports/.config /home/rstudio/.config
+COPY build_imports/.Rprofile /home/rstudio/
 
 # copying the .R folder with Makevars
-COPY .R /home/rstudio/.R
+COPY build_imports/.R /home/rstudio/.R
 
 # rstudio owns ~
 RUN chown -R rstudio:rstudio /home/rstudio/

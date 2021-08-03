@@ -1,19 +1,9 @@
 # Custom Stan Rocker image
 
-Working on getting Stan installed on the `rocker/tidyverse:latest` image, plus some personal `.config` and `.Rprofile` stuff.
+Stan installed on the `rocker/tidyverse:latest` image, plus some personal `.config` and `.Rprofile` stuff.
 
-So far there have been a number of errors getting Stan and `brms` installed. The `Dockerfile_` files are attempts that didn't work for various reasons.
+The build for this image takes a while, ~15 mins on my laptop.
 
-## Links to other attempts
+[Image on Dockerhub](https://hub.docker.com/repository/docker/mculshawmaurer/rocker-stan-custom)
 
-https://discourse.mc-stan.org/t/help-building-rstan-into-docker-container/21396/3
-
-https://code.usgs.gov/umesc/fishStan
-
-https://github.com/jrnold/docker-stan/blob/master/rstan/Dockerfile
-
-https://github.com/antoine-sachet/rocker-ML/blob/master/rocker-stan/Dockerfile
-
-### Haven't tried here yet
-
-https://github.com/rbartelme/phenophasebbn/blob/main/rstudio-bayes-cpu/Dockerfile
+The `github-actions` tag is built from this repo.

@@ -16,11 +16,8 @@ RUN apt-get update \
     libproj-dev \
     libxml2 \
     libxml2-dev \
-    libglpk-dev
-
-
-# installing stuff so V8 package works
-#RUN apt-get install -libv8-dev
+    libglpk-dev \
+    g++
 
 ## From https://github.com/stan-dev/rstan/wiki/Installing-RStan-on-Linux
 RUN echo \
@@ -35,36 +32,31 @@ RUN echo \
 
 RUN ["r", "install_rstan.R"]
 
+# installing rstan
+
+RUN R -e "BiocManager::install('graph')"
+
+RUN install2.r --error --deps TRUE \
+    rstan \
+    igraph \
+    posterior \
+    StanHeaders \
+    && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
+
+# updating a few packages from new location
+RUN install2.r --error --deps FALSE -r "https://mc-stan.org/r-packages/" \
+    cmdstanr \
+    rstan \
+    StanHeaders \
+    && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
+
+RUN install2.r --error --deps TRUE \ 
+    brms \
+    && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
+
 # make sure rstudio can access packages
 RUN chown -R rstudio:rstudio /usr/local/lib/R/
 
 # slightly different way
 RUN chmod -R 777 /usr/local/lib/R/site-library
 
-# installing rstan
-
-RUN install2.r --error --deps TRUE \
-    rstan \
-    && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
-
-RUN install2.r --error --deps TRUE \
-    rstan \
-    && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
-
-RUN R -e "BiocManager::install('graph')"
-
-RUN install2.r --error --deps TRUE \
-    igraph \
-    && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
-
-RUN install2.r --error --deps TRUE \
-    posterior \
-    && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
-
-RUN install2.r --error --deps TRUE -r "https://mc-stan.org/r-packages/" \
-    cmdstanr \
-    && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
-
-RUN install2.r --error --deps TRUE \
-    brms \
-    && rm -rf /tmp/downloaded_packages/ /tmp/*.rds

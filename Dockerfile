@@ -46,3 +46,9 @@ RUN install2.r --error --deps TRUE \
     brms \
     tidybayes \
     && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
+
+RUN install2.r --error --deps TRUE \
+    janitor \
+    renv \
+    here \
+    && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
